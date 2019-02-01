@@ -1,0 +1,8 @@
+name: 'first_menu'
+type: module
+description: 'First Primary Menu'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - node
+  - block

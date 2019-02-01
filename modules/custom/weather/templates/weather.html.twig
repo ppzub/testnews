@@ -1,0 +1,26 @@
+<!-- Add you custom twig html here -->
+<a href="#" class="weather js-weather">
+  <div class="weather-short">
+    <span class="temperature">{{ temp_high['d1'] }} °C</span>
+    <i class="w-icon {{ weather_codes[day_codes['d1']] }}"></i>
+  </div>
+  <div class="weather-full">
+    <ul>
+      <li>
+        <time>{{ timestamp_view }}</time>
+        <span class="temperature">{{ temp_high['d1'] }} °C</span>
+        <i class="w-icon {{ weather_codes[day_codes['d1']] }}"></i>
+      </li>
+      <li>
+        <time>Завтра</time>
+        <span class="temperature">{{ temp_high['d2'] }} °C</span>
+        <i class="w-icon {{ weather_codes[day_codes['d2']] }}"></i>
+      </li>
+      <li>
+        <time>Післязавтра</time>
+        <span class="temperature">{{ temp_high['d3'] }} °C</span>
+        <i class="w-icon {{ weather_codes[day_codes['d3']] }}"></i>
+      </li>
+    </ul>
+  </div>
+</a>

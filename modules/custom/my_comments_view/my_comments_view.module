@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+
+function my_comments_view_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'comment_comment_form') {
+    $form['subject'] = NULL;
+
+    $form['author']['name']['#title'] = NULL;
+    $form['author']['name']['#attributes']['placeholder'] = 'Ім\'я';
+    $form['author']['name']['#attributes']['class'][] = 'span12 inp_blog1';
+    $form['comment_body']['widget']['#after_build'][] = '_allowed_formats_remove_textarea_help';
+
+  }
+
+}
+
+function _allowed_formats_remove_textarea_help($form_element, \Drupal\Core\Form\FormStateInterface $form_state) {
+
+  if (isset($form_element[0]['format'])) {
+    // All this stuff is needed to hide the help text.
+    unset($form_element[0]['format']['guidelines']);
+    unset($form_element[0]['format']['help']);
+    unset($form_element[0]['format']['#type']);
+    unset($form_element[0]['format']['#theme_wrappers']);
+    $form_element[0]['format']['format']['#access'] = FALSE;
+  }
+
+  return $form_element;
+}
+

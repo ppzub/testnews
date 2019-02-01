@@ -1,0 +1,137 @@
+<?php
+$comments_count = 0;
+
+function volynnews_preprocess(&$variables) {
+  $variables['base_path'] = base_path();
+}
+
+/**
+ * Add class to drupal search form.
+ */
+function volynnews_preprocess_form(&$variables) {
+
+  if ($variables['attributes']['id'] == 'search-block-form') {
+    $variables['attributes']['class'][] = 'search';
+  }
+}
+
+
+/**
+ * Editing attributes to drupal inputs form.
+ */
+function volynnews_preprocess_input(&$variables) {
+  if (array_key_exists('id', $variables['attributes'])) {
+    if ($variables['attributes']['id'] == 'edit-keys') {
+      $variables['attributes']['title'] = NULL;
+      $variables['attributes']['name'] = 's';
+      $variables['attributes']['size'] = NULL;
+      $variables['attributes']['maxlength'] = NULL;
+      $variables['attributes']['value'] = NULL;
+      $variables['attributes']['class'] = NULL;
+      $variables['attributes']['placeholder'] = 'Пошук сайтом';
+    }
+    if ($variables['attributes']['id'] == 'edit-keys--2') {
+      $variables['attributes']['title'] = NULL;
+      $variables['attributes']['name'] = 's';
+      $variables['attributes']['size'] = NULL;
+      $variables['attributes']['maxlength'] = NULL;
+      $variables['attributes']['value'] = NULL;
+      $variables['attributes']['class'] = NULL;
+      $variables['attributes']['placeholder'] = 'Пошук сайтом';
+      $variables['attributes']['style'] = 'background:#322020; border:1px solid #010101!important;';
+    }
+    if (array_key_exists('value', $variables['attributes'])) {
+      if (($variables['attributes']['value'] == 'Search') && ($variables['logged_in'] == TRUE)) {
+        $variables['attributes']['class'] = 'slvlsearch';
+        $variables['attributes']['value'] = '';
+      }
+    }
+    if (($variables['attributes']['id'] == 'edit-submit--2') && ($variables['logged_in'] == FALSE)) {
+      $variables['attributes']['class'] = 'slvlsearch';
+      $variables['attributes']['value'] = '';
+    }
+    if (($variables['attributes']['id'] == 'edit-submit--3') && ($variables['logged_in'] == FALSE)) {
+      $variables['attributes']['class'] = 'slvlsearch2';
+      $variables['attributes']['value'] = '';
+    }
+    if (($variables['attributes']['id'] == 'edit-submit--2') && ($variables['logged_in'] == TRUE)) {
+      $variables['attributes']['class'] = 'slvlsearch2';
+      $variables['attributes']['value'] = '';
+    }
+    if (($variables['attributes']['id'] == 'edit-submit--3') && ($variables['logged_in'] == TRUE)) {
+      $variables['attributes']['class'] = 'pull-left but_add_blog';
+      $variables['attributes']['value'] = 'Надіслати';
+    }
+    if (($variables['attributes']['id'] == 'edit-submit--4') && ($variables['logged_in'] == FALSE)) {
+      $variables['attributes']['class'] = 'pull-left but_add_blog';
+      $variables['attributes']['value'] = 'Надіслати';
+    }
+  }
+
+  if (array_key_exists('data-drupal-default-value', $variables['attributes']) && array_key_exists('id', $variables['attributes'])) {
+    if (($variables['attributes']['data-drupal-default-value'] == 'Anonymous') && ($variables['attributes']['data-drupal-selector'] == 'edit-name') && ($variables['attributes']['id'] == 'edit-name--2')) {
+      //dump($variables['element']);
+      $variables['element']['theme_wrappers'] = NULL;
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_page for find user().
+ */
+function volynnews_preprocess_page(&$variables) {
+  $user_name = \Drupal::currentUser()->getAccountName();
+  $variables['username'] = $user_name;
+
+}
+
+function volynnews_preprocess_node(&$variables) {
+  //
+  //
+  try {
+    $variables['comment_count'] = $variables['node']->get('comment')->comment_count;
+  } catch (Exception $e) {
+    $e->getMessage();
+  }
+  //$variables['comment_count'] = $variables['node']->get('comment')->comment_count;
+}
+
+function volynnews_preprocess_image(&$variables) {
+  if ($variables['style_name'] == 'thumb_square_130x107_') {
+    $variables['attributes']['class'] = 'pull-left img_video_news2 news_image';
+  }
+}
+
+/**
+ * Alter blocks
+ */
+function volynnews_preprocess_block(&$variables) {
+  //dump($variables);
+  if ($variables['plugin_id'] == 'search_form_block') {
+    $variables['content']['actions']['#theme_wrappers'] = NULL;
+  }
+  if ($variables['plugin_id'] == 'user_login_block') {
+    $variables['content']['user_login_form']['name']['#title'] = NULL;
+    $variables['content']['user_login_form']['name']['#size'] = NULL;
+    $variables['content']['user_login_form']['name']['#maxlength'] = NULL;
+    $variables['content']['user_login_form']['name']['#theme_wrappers'] = NULL;
+    $variables['content']['user_login_form']['name']['#attributes']['placeholder'] = 'Введіть Ваш Username';
+    $variables['content']['user_login_form']['name']['#attributes']['class'][] = 'input_reg heig_reg';
+
+    $variables['content']['user_login_form']['pass']['#title'] = NULL;
+    $variables['content']['user_login_form']['pass']['#size'] = NULL;
+    $variables['content']['user_login_form']['pass']['#maxlength'] = NULL;
+    $variables['content']['user_login_form']['pass']['#theme_wrappers'] = NULL;
+    $variables['content']['user_login_form']['pass']['#attributes']['placeholder'] = 'Введіть пароль';
+    $variables['content']['user_login_form']['pass']['#attributes']['class'][] = 'input_reg heig_reg';
+
+    $variables['content']['user_login_form']['actions']['submit']['#value'] = 'Увійти';
+    $variables['content']['user_login_form']['actions']['submit']['#attributes']['class'][] = 'btn btn-warning bord_null heig_reg width_but_reg';
+    $variables['content']['user_login_form']['actions']['submit']['#attributes']['id'] = NULL;
+    $variables['content']['user_login_form']['actions']['#theme_wrappers'] = NULL;
+
+    $variables['content']['user_links'] = NULL;
+  }
+
+}

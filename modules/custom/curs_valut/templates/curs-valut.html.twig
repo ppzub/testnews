@@ -1,0 +1,28 @@
+<!-- Add you custom twig html here -->
+<a href="#" class="rate js-rates">
+  <div class="rate-short">
+    <span class="title">USD</span>
+    <span class="curr curr-buy">{{ curs['bid']['usd'] }}</span>
+    <span class="curr curr-sell">{{ curs['ask']['usd'] }}</span>
+  </div>
+  <div class="rate-full">
+    <ul>
+      <li>
+        <span class="title">USD</span>
+        <span class="curr curr-buy">{{ curs['bid']['usd'] }}</span>
+        <span class="curr curr-sell">{{ curs['ask']['usd'] }}</span>
+      </li>
+      <li>
+        <span class="title">EUR</span>
+        <span class="curr curr-buy">{{ curs['bid']['eur'] }}</span>
+        <span class="curr curr-sell">{{ curs['ask']['eur'] }}</span>
+      </li>
+      <li>
+        <span class="title">PLN</span>
+        <span class="curr curr-buy">{{ curs['bid']['pln'] }}</span>
+        <span class="curr curr-sell">{{ curs['ask']['pln'] }}</span>
+      </li>
+    </ul>
+    <time>{{ datetime }}</time>
+  </div>
+</a>

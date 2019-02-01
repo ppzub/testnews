@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains first_menu.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function first_menu_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the first_menu module.
+    case 'help.page.first_menu':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('First Primary Menu') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function first_menu_theme() {
+  return [
+    'first_menu' => [
+      'variables' => array('terms' => NULL, 'subterms' => NULL, 'terms2' => NULL,),
+    ],
+  ];
+}

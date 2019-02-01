@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a 'textarea' #type form element.
+ *
+ * Available variables
+ * - wrapper_attributes: A list of HTML attributes for the wrapper element.
+ * - attributes: A list of HTML attributes for the <textarea> element.
+ * - resizable: An indicator for whether the textarea is resizable.
+ * - required: An indicator for whether the textarea is required.
+ * - value: The textarea content.
+ *
+ * @see template_preprocess_textarea()
+ *
+ * @ingroup themeable
+ */
+#}
+<div {{ wrapper_attributes }}>
+  {% if attributes.toArray()['data-drupal-selector'] == 'edit-comment-body-0-value' %}
+    {% set classes = [ 'textarea_blog1', 'span12' ] %}
+
+    <textarea{{ attributes.addClass(classes).setAttribute('placeholder', 'Текст повідомлення').setAttribute('cols', '30').setAttribute('rows', '10') }} {{ create_attribute({'style': 'height: 200px;'}) }} ></textarea>
+
+  {% else %}
+    <textarea>{{ value }}</textarea>
+  {% endif %}
+</div>

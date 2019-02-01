@@ -1,0 +1,9 @@
+my_first_menu:
+  version: 1.x
+  js:
+    js/first_menu.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings

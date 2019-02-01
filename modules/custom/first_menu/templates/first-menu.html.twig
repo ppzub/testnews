@@ -1,0 +1,47 @@
+<!-- Add you custom twig html here -->
+<div class="menu visible-md">
+  <ul class='cls' id="merf">
+
+    {% for term in terms %}
+
+      {% if term['parent'][0]['target_id'] == 0 %}
+        <li>
+          <div class="neee">
+            <a data-cat="{{ term['tid'][0]['value'] }}"
+               href="{{ term['path'][0]['alias'] }}">{{ term['name'][0]['value'] }}</a>
+            {% for item in subterms %}
+
+              {% if loop.first %}
+                <div class="sub_menu flt">
+                <ul class="no_cls">
+              {% endif %}
+              {% if item['parent'][0]['target_id'] == term['tid'][0]['value'] %}
+                <li>
+                  <a class="" data-cat="{{ item['tid'][0]['value'] }}"
+                     href="{{ item['path'][0]['alias'] }}">{{ item['name'][0]['value'] }}</a>
+                </li>
+              {% endif %}
+              {% if loop.last %}
+                </ul>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+          </div>
+        </li>
+      {% endif %}
+
+    {% endfor %}
+
+    <li><a href="/share/" class="yel_a_main">  повідом новину</a></li>
+    <li><a href="/avers/" class="yel_a_main avers">Аверс</a></li>
+  </ul>
+</div>
+
+<div class="menu2 visible-md">
+  {% for item in terms2 %}
+  <a href="{{ item['path'][0]['alias'] }}" data-cat="{{ item['tid'][0]['value'] }}">{{ item['name'][0]['value'] }}</a>
+  {% endfor %}
+  <a href="/faq/" class="red_a_main">  Запитай юриста</a>
+  <a href="/news/pdf/" class="red_a_main mandrosvit"> PDF-архів газети </a>
+</div>

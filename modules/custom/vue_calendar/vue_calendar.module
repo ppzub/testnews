@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains vue_calendar.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function vue_calendar_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the vue_calendar module.
+    case 'help.page.vue_calendar':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My calendar implement with vuejs') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vue_calendar_theme() {
+  return [
+    'vue_calendar' => [
+      'render element' => 'children',
+    ],
+  ];
+}

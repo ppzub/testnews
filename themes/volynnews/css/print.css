@@ -1,0 +1,5 @@
+.dropdown-menu, .time_news_top_v, .header, .soc_black_video, .news_like_block, .border_for_sp3, .marg_video_hot_news, #comments,
+.line_coment, .man_coment, #comment-box, .slider_nuz, .slider_text2, .footer, .title_blog_news, .stand_br18
+{
+    display:none;
+}

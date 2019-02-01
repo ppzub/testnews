@@ -1,0 +1,6 @@
+name: 'vue_calendar'
+type: module
+description: 'My calendar implement with vuejs'
+package: Custom
+core: 8.x
+

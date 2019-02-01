@@ -1,0 +1,8 @@
+name: 'weather'
+type: module
+description: 'Gets weather for Lutsk from yahoo'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - node
+  - block

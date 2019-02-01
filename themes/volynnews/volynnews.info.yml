@@ -1,0 +1,19 @@
+name: Volynnews
+type: theme
+description: 'Волинські новини'
+core: 8.x
+base theme: false
+
+libraries:
+  - volynnews/bootstrap
+  - volynnews/static
+  - volynnews/custom
+  - volynnews/royalslider
+  - volynnews/my_login_js
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  content: 'Content'
+  footer: 'Footer'
+

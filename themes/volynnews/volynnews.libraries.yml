@@ -1,0 +1,54 @@
+bootstrap:
+  version: 2.3.1
+  css:
+    theme:
+      bootstrap/css/bootstrap.css: {}
+  js:
+    bootstrap/js/bootstrap.min.js: {}
+  dependencies:
+    - core/jquery
+
+my_login_js:
+  version: 1.x
+  js:
+    static/js/login.js: {}
+  dependencies:
+      - core/jquery
+      - core/jquery.once
+      - core/drupal
+      - core/drupalSettings
+
+static:
+  css:
+    theme:
+      static/css/app.css: {}
+  js:
+    static/js/jquery.fitvids.js.js: {}
+    static/js/slick.js: {}
+    static/js/ui.js: {}
+  dependencies:
+    - core/jquery
+
+custom:
+  css:
+    theme:
+      css/plyr.css: {}
+      css/print.css: {}
+      css/style.css: {}
+  js:
+    js/hls.js: {}
+    js/orphus.js: {}
+    js/plyr.js: {}
+    js/polls.js: {}
+    js/sys_funcs.js: {}
+  dependencies:
+    - core/jquery
+
+royalslider:
+  css:
+    theme:
+      vendor/royalslider/royalslider.css: {}
+  js:
+    vendor/royalslider/jquery.royalslider.min.js: {}
+  dependencies:
+    - core/jquery

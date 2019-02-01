@@ -1,0 +1,119 @@
+<div class="top_title1 clearfix">
+  <div class="span6">
+    <a href="index.html#"
+       class="pull-left top_mobile js-mobile-toggle hidden-md"><i
+        class="gamb"></i><i
+        class="gamb"></i><i class="gamb"></i></a>
+
+    {% if logged_in %}
+
+      <div class="pull-left top_avtor">
+        <a href="{{ path('entity.user.canonical', {'user': user.id}, {}) }}"
+           class="marg3">
+          <img src="{{ base_path ~ directory }}/images/man_avtor.png" width="26" height="26"
+               alt="" class="pull-left marg4">
+          <div
+            class="text_avtor pull-left rss_style padd_l2 padd_t1 hidden-xs">{{ username }}</div>
+        </a>
+        <a href="{{ path('user.logout') }}">
+          <button class="user-logout-btn" style="display: inline;">Вийти
+          </button>
+        </a>
+      </div>
+
+    {% else %}
+
+      <div class="pull-left top_avtor">
+        <div class="dropdown prof-login">
+          <a class="dropdown-toggle mydrop" href="#" data-toggle="dropdown">
+            <div class="man_avtor man_avtor_fon1 pull-left marg4"></div>
+            <div class="text_avtor pull-left marg1 padd_t1 hidden-xs">
+              Вхід
+            </div>
+          </a>
+          <!--Dropdown Авторизація-->
+          <div class="dropdown-menu block_reg">
+            <div class="text_avtor2">Авторизація</div>
+            <div class="text_avtor3">
+              <a href="{{ path('user.register') }}">Зареєструйтеся на
+                сайті</a>, якщо у вас
+              немає облікового запису на Волинських Новинах.
+              <br><br>
+              <a href="{{ path('user.pass') }}">Забули пароль?</a> Або
+              якщо ви - користувач
+              попередньої версії сайту, пам’ятаєте свій логін - просто <a
+                href="{{ path('user.pass') }}">створіть новий пароль</a>.
+              <br><br>
+              Якщо у вас виникли проблеми з авторизацією, будь ласка, <a
+                href="https://www.volynnews.com/contacts/">напишіть нам
+                листа</a>.
+            </div>
+
+            {{ page.header['userlogin'] }}
+          </div>
+
+          <!--END-Dropdown Авторизація-->
+
+        </div>
+      </div>
+    {% endif %}
+
+    <!--Курс валют-->
+    {{ page.header['cursblock'] }}
+    <!--END-Курс валют-->
+
+  </div>
+
+  <div class="span6">
+
+    <!--Погода-->
+    {{ page.header['weatherblock'] }}
+    <!--END-Погода-->
+
+    <div class="pull-left visible-md" style="width: 66px;">
+      <a href="https://www.volynnews.com/uarss.xml">
+        <img src="{{ base_path ~ directory }}/images/rss.png" width="26" height="26" alt=""
+             class="pull-left">
+        <div class="text_avtor pull-left rss_style padd_l2 padd_t1">RSS</div>
+      </a>
+    </div>
+    <a href="/contacts/" class="vasja">
+      <div class="man_avtor man_avtor_fon2 pull-left marg5"></div>
+      <div class="text_siryj pull-left marg1 padd_t1 hidden-xs hidden-sm">
+        Контакти
+      </div>
+    </a>
+    <!--<div class="text_siryj pull-left marg5 padd_t1">Ми у соцмережах</div>-->
+    <div class="pull-right top_social">
+      <a href="https://www.facebook.com/volynnews">
+        <div class="pull-left soc_merezha">
+          <img src="{{ base_path ~ directory }}/images/face.png" width="27" height="27"
+               alt=" ">
+        </div>
+      </a>
+      <a href="https://twitter.com/volynnews_com">
+        <div class="pull-left soc_merezha">
+          <img src="{{ base_path ~ directory }}/images/twitter.png" width="27" height="27"
+               alt=" ">
+        </div>
+      </a>
+      <a href="https://www.youtube.com/channel/UC-zv2jqax3GKtLCjycy4FDg">
+        <div class="pull-left soc_merezha">
+          <img src="{{ base_path ~ directory }}/images/photo.png" width="27" height="27"
+               alt=" ">
+        </div>
+      </a>
+      <!--<a href="https://vk.com/volynnews"><div class="pull-left soc_merezha">
+              <img src="/public/images/vk.png" width="27" height="27" alt=" ">
+      </div></a>-->
+      <a href="https://www.instagram.com/volynnews/">
+        <div class="pull-left soc_merezha">
+          <img src="{{ base_path ~ directory }}/images/instagram.png" width="27" height="27"
+               alt=" ">
+        </div>
+      </a>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>
+<div class="fon_line1 row-fluid span12"></div>

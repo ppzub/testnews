@@ -1,0 +1,12 @@
+name: Vue Calendar Block
+machine_name: vue-calendar-block
+type: pdb
+description: 'Vue Calendar Block'
+package: Vue
+core: '8.x'
+module_status: active
+presentation: vue
+add_js:
+  footer:
+    'dist/build.js': {}
+

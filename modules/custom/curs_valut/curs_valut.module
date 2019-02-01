@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains curs_valut.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function curs_valut_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the curs_valut module.
+    case 'help.page.curs_valut':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Курс валют в шапці') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function curs_valut_theme() {
+  return [
+    'curs_valut' => array(
+      'variables' => array('curs' => NULL, 'datetime' => NULL),
+    ),
+  ];
+}

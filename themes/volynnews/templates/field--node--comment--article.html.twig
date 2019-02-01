@@ -1,0 +1,58 @@
+{% set comments_count = 0 %}
+  {% for key in comments|keys %}
+    {% if key matches '/^\\d+$/' %}
+      {% set comments_count = comments_count + 1 %}
+    {% endif %}
+  {% endfor %}
+
+
+<section{{ attributes }}>
+
+  <div class="row-fluid">
+    <div class="add_coment span5 span12-xs">
+      <img src="{{ base_path ~ directory }}/images/coment_smile.png" alt=""
+           class="pull-left">
+      <div class="pull-right">
+        <div class="add_coment_but visible-md">
+          <button class="add_coment_but comment-answer" data-id="0"
+                  style="background: transparent; border: none;">
+            Додати свій коментар
+          </button>
+        </div>
+        <div class="my_time_news_top_v pull-left suma_coment">
+          Коментарів: {{ comments_count }}</div>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12 line_coment"></div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12 line_coment"></div>
+  </div>
+
+  {{ comments }}
+
+  <div class="row-fluid my_stand_br18">
+    <div class="span12">
+      <div class="comment-info">
+        <h4>Додати коментар:</h4>
+        <p>
+          УВАГА! Користувач www.volynnews.com має розуміти, що коментування на
+          сайті створені аж ніяк не для політичного піару чи антипіару, зведення
+          особистих рахунків, комерційної реклами, образ, безпідставних
+          звинувачень та інших некоректних і негідних речей.
+          Утім коментарі – це не редакційні матеріали, не мають попередньої
+          модерації, суб’єктивні повідомлення і можуть містити недостовірну
+          інформацію.
+        </p></div>
+    </div>
+
+    {% if comment_form %}
+      {{ comment_form }}
+    {% endif %}
+    <div style="clear:both;"></div>
+  </div>
+
+</section>

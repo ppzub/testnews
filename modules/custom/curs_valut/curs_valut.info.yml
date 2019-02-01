@@ -1,0 +1,9 @@
+name: 'curs_valut'
+type: module
+description: 'Курс валют в шапці'
+core: 8.x
+package: Custom
+dependencies:
+- node
+- block
+

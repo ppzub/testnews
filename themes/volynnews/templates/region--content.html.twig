@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if region == 'content' %}
+<div class="row-fluid">
+  <div class="span9 span12-xs span8-sm padd_l2 pull-left news_left_content main-block ">
+
+    <div class="row-fluid hor_news row-block">
+      <div class="media">
+{% if content %}
+
+  <div{{ attributes }}>
+    {{ content }}
+  </div>
+{% endif %}
+      </div>
+
+    </div>
+  </div>
+
+
+
+<div class="span3 span12-xs span4-sm  my_border_for_sp3 marg_null pull-right right-block ">
+  <div class="row-fluid span12">
+    <div class="span12 pull-left">
+
+
+      <div class="block_opyt_progress_true">
+
+        <div class="title_hot_news">
+          <a href="/news/all/">Новини</a>
+        </div>
+
+        <div class="text_news_main2 row-fluid">
+
+          {% set block = drupal_block('views_block:right_news_block-block_right_sidebar') %}
+          {{ block }}
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}

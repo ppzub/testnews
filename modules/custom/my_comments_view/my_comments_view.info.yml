@@ -1,0 +1,5 @@
+name: 'my_comments_view'
+type: module
+description: 'Alter comments block attribute'
+core: 8.x
+package: 'Custom'

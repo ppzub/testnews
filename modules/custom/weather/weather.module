@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains weather.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function weather_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the weather module.
+    case 'help.page.weather':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Gets weather for Lutsk from yahoo') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function weather_theme() {
+  return [
+    'weather' => [
+      'variables' => array('day_codes' => NULL, 'timestamp_view' => NULL, 'weather_codes' => NULL, 'temp_high' => NULL),
+    ],
+  ];
+}
